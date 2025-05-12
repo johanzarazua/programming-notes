@@ -9,14 +9,16 @@ Al desarrollador le permite crear aplicaciones sin tener que preocuparse por la 
 ## Ejemplo practico. 
 En un entorno tradicional, un administrador de sistemas tendria que aporvisionar una maquina virtual con los requisitos especificos (paqueterias, configuracion de red, hardware, etc.) por cada aplicacion.
 
-![Aprovisionamiento VM](imagenes/01-aprovisionamiento-vm.svg)[^1]
-<!-- >  Esta imagen fue tomada de [[Ubicación](https://pabpereza.dev/docs/cursos/kubernetes/Introduccion)]. -->
+
+![Aprovisionamiento VM](imagenes/01-aprovisionamiento-vm.svg)
+[Créditos: Imagen tomada de pabpereza.dev](https://pabpereza.dev/docs/cursos/kubernetes/Introduccion)
 
 En un entorno de kubernestes, creado por 4 servidores (1 nodo maestro y 3 trabajadores), el administrador solo tendria que añadir y mantener los nodos del cluster. 
 Cuando se requiera gregar una aplicacion nueva se pueden asignar una cantidad de los recursos del clúster.
 La pincipal diferencia es que no se tendria que dar una "maquina" sino solo un número de recursos cuantificados de CPU y RAM del cluster.
 
 ![Entorno Kubernetes](imagenes/02-entorno-kubernetes.svg)
+[Créditos: Imagen tomada de pabpereza.dev](https://pabpereza.dev/docs/cursos/kubernetes/Introduccion)
 
 ## Beneficios de Kubernetes.
 Kubernetes ofrexe las siguientes ventajas:.
@@ -26,5 +28,3 @@ Kubernetes ofrexe las siguientes ventajas:.
 - **Automatización:** permite automatizar tareas como el despliegue, la escalabilidad, auto-reparación, etc. 
 - **Estandarizacion:** Al ser open-source se ha convertio en un estandar enla orquestacion de contenedores. La mayoria de servicios en la nube ofrecen soporte para Kubernetes, esto permite crear entornos interoperables entre si, permitiendo migrar de manera facil entre entornos, crear entornos hibridos o multi-cloud.
 - **Ecosistema:** cuenta con un amplio ecosistema que permite extender su funcionalidad.
-
-[^1]: Créditos de la imagen:
