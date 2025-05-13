@@ -1,4 +1,4 @@
-# Spring Cloud Config
+# Config Server
 
 Es un servidor de configuracion centralizado, este nos permite:
 - Almacenar configuraciones de multiples microservicios
