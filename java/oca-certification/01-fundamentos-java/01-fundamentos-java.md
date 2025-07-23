@@ -1,10 +1,15 @@
 # 1. Fundamentos de java
+
+<!-- TODO: Agregar historia de Java -->
+
 ## 1.1 Principales características de Java
 Las principales características de Java son:
 
-* **Lenguaje orientado a objetos.** En los lenguajes orientados a objetos el código es escrito en clases, y se organiza en metodos (funciones) que se invocan mediante instancias de la clase (objetos). Este tipo de lenguajes tienen una serie de características como herencia, sobrecarga y sobrescritura, polimorfismo y encapsulación, que les dan una gran potencia.
+- **Orientado a objetos.** El codigo es escrito en clases, las cuales contienen atributos (caracteristicas de la clase) y metodos que pueden ser inovcados por instancias de la clase.
+Los lenguajes orientados a objetos tienen una serie de caracteristicas como herencia, sobrecarga, sobreescritura, polimorfismo y encapsilacion, que los dotan de un gran potencia.
 
-* **Portabilidad.** Desde su primera version, lanzada por Sun Microsystems en mayo de 1995, java incorporó una característica muy importante, quizá la principal característica del lenguaje, se trata de la posibilidad de compilar una vez y ejecutar en cualquier parte. Esto quiere decir que el resultado de la compilación es independiente de la plataforma y puede ejecutarse en cualquier sistema operativo. Esto es gracias a un elemento clave de java conocido como Java Virtual Machine (JVM).
+- **Portabilidad.** Java nos brinda la posibilidad de poder compilar una vez y ejecutar en cualquier parte, esto es gracias a un elemento clave del lenguaje llamado Java Virtual Machine (JVM). Esto quiere decir que el resultado de la compilacion es independiente a la plataforma y puede ejecutarse en cualquier sistema que cuenta con una JVM.
+Esta es quizas la caracteristica principal del lenguaje. 
 
 * **Encapsulación.** Consiste en la protección de atributos de la clase para que no sean accesibles desde el exterior, permitiendo el acceso a ellos mediante metodos.
 
@@ -19,20 +24,29 @@ Los programas en Java se escriben en archivos .java (código fuente), al compila
 La JVM es un software que se encarga de traducir en tiempo de ejecución los bytecodes a código máquina.
 ![java-compilation](..%2Fimgs%2Fjava-compilation.png)
 
-La JVM incluye un interprete y otros componentes como el Gestor multitarea, el Recolector de basura (Garbage Collector), el Cargador de clases (Class loader) y el Compilador JIT.
-El compilador JIT es un componente que se encarga de compilar algunas partes de código que tiene que interpretar para no tener que repetir el proceso de interpretación al ejecutar esos bloques de código
+La JVM incluye difernetes componentes, entre los cuales se encuentran:
+- Gestor multitareas
+- Garbage Collector
+- Class Loader
+- JIT Compiler
+<!-- TODO: agregar descripcion de cada componente -->
+
+Existen versionde de la JVM para cada sistema operativo lo que permite que un programa compilado (archivos .class) pueda ser ejecutado en cualquier S.O.
 
 ## 1.2 Programas en Java
 ### 1.2.1 Clases
-Todos los programas en Java se organizan mediante clases. Esto nos ayuda a definir el comportamiento de los objetos creados con una clase.
+Todos los programas en Java se escirben dentro de clases, el objetivo de una clase es definir el comportamiento de los objetos creados a partir de ella.  
 
-Las clases cuentan con atributos, los cuales nos ayudan a indicar las características de los objetos, constructores, funciones que nos permiten crear instancias de la clase, y métodos, que definen las acciones que pueden realizar los objetos. Una vez que se define una clase se pueden crear instancias (objetos) de la misma para hacer uso de los atributos y metodos definidos.
+El comportamiento de una clase se define mediante atributos y metodos.
+- atributos: definen caracteristicas de los objetos
+- metodos: definen las operaciones que puede realizar un objeto
 
-Podemos entender una clase como un molde de galletas y a las instancias como las galletas.
+Podemos entender/pensar en una clase como si un molde y los objetos las entidades "fisicas" creadas mediante el molde
 
 ### 1.2.2 Estructura de una clase
-Una clase se define utilizando la palabra reservada class, seguida del nombre de la clase y entre llaves se definen el contenido de la clase.
-Un ejemplo de una clase sería el siguiente 
+Una clase se define utilizando la palabra reservada `class`, seguida del nombre de la clase y entre llaves se definen el contenido de la clase.
+Un ejemplo de una clase sería el siguiente:
+
 ```java
 class ClassName{
   int a; //atributo
@@ -44,7 +58,9 @@ class ClassName{
   }
 }
 ```
-Un archivo .java puede contener 1 o más clases, pero solo una debe tener la palabra reserveda public y el nombre de esta clase debe coincidir con el nombre del archivo .java
+
+Un archivo .java puede contener 1 o más clases, pero solo una debe tener la palabra reserveda public (y debe coinicidir con el nombre del archivo .java)
+
 Suponiendo que tenemos un archivo con el nombre CLase1.java, un ejemplo del contenido del archivo puede ser el siguiente
 ```java
 public class Clase1{
@@ -60,7 +76,10 @@ class Clase2{
 }
 
 ```
-Si en un archivo .java aparecen dos clases que utilicen la palabra public, generaría un error de compilación, este error también puede generarse si el nombre de la clase que utiliza public no coincide con el nombre del archivo .java
+
+> [!CAUTION]
+> Si dos clases dentro de un archivo contienen la palbra `public` se generara un error de compilacion. Este error tambien puede ser producido si la clase publica no coincide con el nombre del archivo
+
 
 ### 1.2.3 Paquetes (Packages)
 Las clases se organizan en paquetes (directorios), un paquete puede contener varios archivos .java e incluso subpaquetes
@@ -82,3 +101,87 @@ class Clase2{
   }
 }
 ```
+
+> [!IMPORTANT]
+> la sentencia `package` debe ser la primera en el archivo .java
+
+### 1.2.4 Metodo main
+El metodo `main()` representa el punto de entrada/inicio de un programa Java. Este metodo es utilizado por la JVM para ejecutar una clase.
+Es comun que los programas en Java cuenten con muchas clases, entre todas ellas una debera contener el metodo main.
+
+El metodo main puede tener dos formatos validos.
+La diferencia entre ellos es la forma de definir los argumentos de entrada, estos pueden ser con un arreglo de String (formato 1) o indicando un numero de variable de argumentos (formato 2)
+
+```java
+//formato 1
+public class ClaseA{
+  public static void main (String[] args){
+
+  }
+}
+
+//formato 2
+public class ClaseA{
+  public static void main (String ... args){
+
+  }
+}
+```
+
+Algunos ejemplos incorretos de la declaracion del metodo main son los siguientes
+```java
+
+static void main(String[] args) //falta public
+
+public void main(String[] args) //falta static
+
+public static int main(String[] args) //tipo de retorno incorrecto
+
+public static void Main(String[] args) //nombre incorrecto
+
+```
+
+
+> [!CAUTION]
+> Los ejemplos anteriores no provocan un error de compilacion ya que sintacticamente son correctos, sin embargo se generaria un error ejecucion ya que la JVM no encontraria el metodo main
+
+## 1.3 Compilacion y Ejecucion
+
+### 1.3.1 Herramientas JDK
+
+El JDK (Java Development Kit) cuenta con un conjunto de herramientas basicas que nos permiten compilar y ejecutar progrmas java, asi como con las clases que forman el Java Standard Edition (Java SE)
+
+El comando para compilar un archivo .java tiene el nombre de `javac`, mientras que el comando para ejecutar una clase se llama `java`. Ambos comandos se enccuentran dentro del directorio de instalacion del JDK, en la subcarpeta bin.
+
+### 1.3.2 Compilacion 
+
+Para compilar un archivo .java, debemos situarnos desde terminal en la ruta donde se encuentre nuestro archivo y lanzaremos el comando
+
+```shell
+javac Archivo.java
+```
+
+Si las clases se encuentran definidad en un paquete y queremos generar la estructura de carpetas correspondiente debemos usar el comando
+
+```shell
+javac -d . Archivo.java
+```
+
+En caso de existir errores de compilacion se mostraran en la salida del comaando, de lo contrario se generaran los arhivos .class correspondientes.
+
+### 1.3.3 Ejecucion
+
+Para ejecutar un programa java deberemos colocarnos desde terminal en la ruta donde se realizo la compilacion y ejecutaremos el siguiente comando utilizando la clase que contiene el metodo main.
+
+```shell
+java Archivo
+```
+
+si la clase se ecuentra dentro de algun paquete, se debe indicar el nombre cualificado de la clase.
+
+```shell
+java paquete.Archivo
+```
+
+> [!NOTE]
+> Al ejecutar una clase se indica el nombre de la misma, no el nombre del archivo .class
