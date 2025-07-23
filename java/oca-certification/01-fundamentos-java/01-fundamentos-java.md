@@ -105,7 +105,32 @@ class Clase2{
 > [!IMPORTANT]
 > la sentencia `package` debe ser la primera en el archivo .java
 
-### 1.2.4 Metodo main
+### 1.2.4 Importacion de clases
+
+Cuando se necesita utilizar una clase que se encuentra en un paquete diferente se debe importar, para ello utilizamos la sentencia import.
+
+```java
+import java.util.ArrayList; //importa una clase
+import java.util.*; //importa todas las clases de un paquete
+import static java.lang.Math.*; //importa elementos estaticos de una clase
+```
+
+La sentencia import debe colocarse despues de la sentencia package y antes de la definicion de la clase
+
+```java
+package mypackage;
+
+import java.util.ArrayList; 
+
+public class myClass{
+
+}
+```
+
+>[!CAUTION]
+>Es importante respetar el orden de las sentencias package e import, ya que de no ser asi se puede generar un error de compilacion
+
+### 1.2.5 Metodo main
 El metodo `main()` representa el punto de entrada/inicio de un programa Java. Este metodo es utilizado por la JVM para ejecutar una clase.
 Es comun que los programas en Java cuenten con muchas clases, entre todas ellas una debera contener el metodo main.
 
@@ -185,3 +210,21 @@ java paquete.Archivo
 
 > [!NOTE]
 > Al ejecutar una clase se indica el nombre de la misma, no el nombre del archivo .class
+
+### 1.3.4 Argumentos por linea de comandos
+
+Al ejecutar la clase principal es posible pasar argumentos al metodo main, estos se almacenan en el arreglo de String.
+
+```shell
+java NombreClase arg1 arg2
+```
+
+Si algun argumento debe contener espacios se deben utilizar comillas.
+
+```shell
+java NombreClase "primer argumento" arg2
+```
+
+
+> [!CAUTION]
+> Se debe tener cuidado con los indices del array, ya que si se intenta acceder a un indice que no existe se provocara una excepcion del tipo ArrayIndexOutOfBoundsException
