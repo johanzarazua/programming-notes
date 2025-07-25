@@ -1,8 +1,6 @@
 # 1. Fundamentos de java
 
-<!-- TODO: Agregar historia de Java -->
-
-## 1.1 Principales características de Java
+## 1.1 Características de Java
 Las principales características de Java son:
 
 - **Orientado a objetos.** El codigo es escrito en clases, las cuales contienen atributos (caracteristicas de la clase) y metodos que pueden ser inovcados por instancias de la clase.
@@ -17,43 +15,51 @@ Esta es quizas la caracteristica principal del lenguaje.
 
 * **Seguro.** El código Java es ejecutado en un entorno controlado por la JVM lo que impide que se realicen operaciones dañinas sobre el equipo
 
-### 1.1.1 Compilación de un programa Java
-Los programas en Java se escriben en archivos .java (código fuente), al compilar estos archivos se generan archivos .class conocidos como bytecodes, estos son independientes de la plataforma y se pueden ejecutar en cualquier sistema que cuente con una JVM.
+## 1.2 Ciclo de vida de un programa Java
+El ciclo de vida de un programa java se puede dividir en las siguientes fases:
 
-### 1.1.2 Java Virtual Machine (JVM)
-La JVM es un software que se encarga de traducir en tiempo de ejecución los bytecodes a código máquina.
-![java-compilation](..%2Fimgs%2Fjava-compilation.png)
+- **Creacion de programa:** consiste en crear el codigo fuente del programa, generando los archivos .java necesarios.
 
-La JVM incluye difernetes componentes, entre los cuales se encuentran:
-- Gestor multitareas
+- **Compilacion:** el codigo fuente del programa es compilado conviertindolo a bytecodes (archivo .class)
+  
+- **Ejecucion:** La JVM toma los bytecodes, los carga en memoria y los traduce en código máquina para ejecutar el programa. 
+
+![java-compilation](imgs/java-compilation.png)
+
+## 1.3 Java Virtual Machine (JVM)
+La JVM es un software que se encarga de manejar la ultima fase en el ciclo de vida de una aplicacion java.
+
+La JVM incluye provee diferentes servicios en tiempo de ejecucion como gestor de memoria, sincronizacion de hilos, y manejo de excepciones.
+En su interior cuenta con difernetes componentes, entre los cuales se encuentran:
 - Garbage Collector
 - Class Loader
 - JIT Compiler
-<!-- TODO: agregar descripcion de cada componente -->
 
-Existen versionde de la JVM para cada sistema operativo lo que permite que un programa compilado (archivos .class) pueda ser ejecutado en cualquier S.O.
+Existen versionde de la JVM para cada sistema operativo lo que permite que un programa compilado pueda ser ejecutado en cualquier S.O.
 
-## 1.2 Programas en Java
-### 1.2.1 Clases
-Todos los programas en Java se escirben dentro de clases, el objetivo de una clase es definir el comportamiento de los objetos creados a partir de ella.  
+Se puede consultar los siguientes enlaces para obtener mas infromacion sobre los componentes de la JVM
+<!-- TODO: agregar referencias o enlaces  -->
 
-El comportamiento de una clase se define mediante atributos y metodos.
-- atributos: definen caracteristicas de los objetos
-- metodos: definen las operaciones que puede realizar un objeto
+## 1.4 Creacion de programas en Java
+Java es un lenguaje orientado a objetos, por lo que sus aplicaciones se escriben dentro de clases. 
 
-Podemos entender/pensar en una clase como si un molde y los objetos las entidades "fisicas" creadas mediante el molde
+### 1.4.1 Clases
+El objetivo de una clase es definir el comportamiento de los objetos creados a partir de ella. Este comportamiento se define mediante atributos y metodos.
+- **Atributos:** definen caracteristicas de los objetos
+- **Metodos:** definen las operaciones que puede realizar un objeto
 
-### 1.2.2 Estructura de una clase
-Una clase se define utilizando la palabra reservada `class`, seguida del nombre de la clase y entre llaves se definen el contenido de la clase.
-Un ejemplo de una clase sería el siguiente:
+Podemos ver una clase como un molde (prototipo) y a los objetos como entidades "fisicas" creadas mediante el molde
+
+Pare definir una clase utilizamos la palabra `class`, seguida del nombre de la clase y entre comillas definimos el contenido de la clase.
 
 ```java
-class ClassName{
-  int a; //atributo
-  public ClassName(){ //constructor
+class Car{
+  String model; //atributo
+  public Car(){ //constructor
     
   }
-  public void metodo1(){ //método
+
+  public void start(){ //método
     
   }
 }
@@ -61,27 +67,28 @@ class ClassName{
 
 Un archivo .java puede contener 1 o más clases, pero solo una debe tener la palabra reserveda public (y debe coinicidir con el nombre del archivo .java)
 
-Suponiendo que tenemos un archivo con el nombre CLase1.java, un ejemplo del contenido del archivo puede ser el siguiente
+Suponiendo que tenemos un archivo con el nombre Car.java, un ejemplo del contenido del archivo puede ser el siguiente
 ```java
-public class Clase1{
-  public void metodo1(){
+public class Car{
+  public void start(){
     
   }
 }
 
-class Clase2{
-  public void metodo2(){
+class Driver{
+  public void driving(){
 
   }
 }
-
 ```
 
 > [!CAUTION]
-> Si dos clases dentro de un archivo contienen la palbra `public` se generara un error de compilacion. Este error tambien puede ser producido si la clase publica no coincide con el nombre del archivo
+> Podemos ocasionar errores de compilacion si:
+> - Dos o más clases dentro de un archivo .java contienen la palabra `public`
+> - El nombre de la clase que contiene la palabra `public` no coincide con el nombre del archivo
 
 
-### 1.2.3 Paquetes (Packages)
+### 1.4.2 Paquetes (Packages)
 Las clases se organizan en paquetes (directorios), un paquete puede contener varios archivos .java e incluso subpaquetes
 
 Dentro del archivo .java el paquete se indica utilizando la palabra **package** y debe colocarse al inicio, de modo que todas las clases contenidas en este archivo sé encontrar en el mismo paquete.
@@ -228,3 +235,6 @@ java NombreClase "primer argumento" arg2
 
 > [!CAUTION]
 > Se debe tener cuidado con los indices del array, ya que si se intenta acceder a un indice que no existe se provocara una excepcion del tipo ArrayIndexOutOfBoundsException
+
+### 1.1.1 Compilación de un programa Java
+Los programas en Java se escriben en archivos .java (código fuente), al compilar estos archivos se generan archivos .class conocidos como bytecodes, estos son independientes de la plataforma y se pueden ejecutar en cualquier sistema que cuente con una JVM.
